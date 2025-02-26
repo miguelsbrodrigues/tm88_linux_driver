@@ -1,0 +1,5 @@
+backend,ep-client,ep-client-2.0.10.1-1.amd64,deb
+backend,ep-core,ep-core-2.0.10.1-1.amd64,deb
+backend,ep-escpos,ep-escpos-2.0.10.2-1.amd64,deb
+backend,epson-cups-escpos,epson-cups-escpos-1.0.10.0-1.amd64,deb
+tmt-cups,tmt-cups,tmt-cups_1.0.1-1_amd64,deb

@@ -1,0 +1,5 @@
+backend,ep-client,ep-client-2.0.9.0-1.x86_64,rpm
+backend,ep-core,ep-core-2.0.9.0-1.x86_64,rpm
+backend,ep-escpos,ep-escpos-2.0.10.2-1.x86_64,rpm
+backend,epson-cups-escpos,epson-cups-escpos-1.0.10.0-1.x86_64,rpm
+tmt-cups,tmt-cups,tmt-cups-1.0.1-1.x86_64,rpm
