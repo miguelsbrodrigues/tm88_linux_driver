@@ -1,0 +1,435 @@
+Epson TM/BA Series Thermal Printer Driver Installation Manual
+
+Contents
+1. License agreement
+2. File configuration
+3. Operational environment
+4. How to Install
+5. How to Set
+6. List of installation packages
+7. Notes and restrictions
+8. Support information
+9. Modification from the old version
+
+
+---------------------------------------------------------------------
+1. License agreement
+---------------------------------------------------------------------
+
+This software is distributed under a non-free proprietary license.
+Refer to the attached EULA.en.txt for the license details.
+
+Copyright of all source code composing binary files of this software 
+is held by SEIKO EPSON CORPORATION, and binary files are distributed 
+under the SEIKO EPSON CORPORATION SOFTWARE LICENSE AGREEMENT (refer 
+to EULA.en.txt).
+
+
+---------------------------------------------------------------------
+2. File configuration
+---------------------------------------------------------------------
+
+The package (tmt-cups.tar.gz) includes the following.
+
+  InstallManual.en.txt          The installation manual.
+                                This file.
+
+  install.sh                    The installation script file.
+                                A program to install the printer 
+                                driver.
+
+  ppd                           The PPD file storage directory.
+                                The directory stores PPD files and 
+                                manuals for each model.
+
+  tmt-cups                      The printer driver package storage 
+                                directory.
+
+  backend                       The back-end and communication module
+                                storage directory.
+
+
+---------------------------------------------------------------------
+3. Operational environment
+---------------------------------------------------------------------
+
+This software supports the following environments.
+Operations in an unsupported environment are not guaranteed.
+
+* Operating System
+  - openSUSE 11.1
+  - Ubuntu 9.04
+
+* Hardware:
+  - Intel x86(32bit) architecture.
+  - Intel x86_64(64bit) architecture.
+
+* Related software
+  - CUPS Ver.1.1.23 or later
+      <http://www.cups.org/>
+
+    - Ubuntu 9.04
+      You need the cups package 1.3.9-17ubuntu3.4 or later.
+
+  - libusb-1.0.0 or later
+      <http://www.libusb.org/>
+
+* Operations have been confirmed in the following environments.
+
+  - openSUSE 11.1 environment
+     - libusb-1_0-0-1.0.2-2.2
+     - cups-1.3.9-7.1
+
+  - Ubuntu 9.04 environment
+     - libusb-1.0-0-2:1.0.0-1
+     - cups-1.3.9-17ubuntu3.4
+
+* You can check information on the above packages for your 
+  environment as follows.
+
+  - openSUSE 11.1 environment
+    How to check libusb-1_0-0
+      1. Checking names of the installed packages.
+       $ rpm -qa | grep libusb-1_0-0
+       libusb-1_0-0-1.0.2-2.2      <- Displayed details
+
+      2. Checking details of the package displayed by the above
+         command.
+       $ rpm -qi libusb-1_0-0-1.0.2-2.2
+
+    How to check cups
+      1. Checking names of the installed packages.
+       $ rpm -qa | grep cups
+       ...
+       cups-1.3.9-7.1              <- Displayed details
+       ....
+
+      2. Checking details of the package displayed by the above
+         command.
+       $ rpm -qi cups-1.3.9-7.1
+
+  - Ubuntu 9.04 environment
+    How to check libusb-1.0-0
+      $ dpkg-query -l libusb-1.0-0
+
+    How to check cups
+      $ dpkg-query -l cups
+
+
+---------------------------------------------------------------------
+4. How to Install
+---------------------------------------------------------------------
+4.1. Install the package which is required in your environment.
+  
+  * Check to see you are connected to the Internet before obtaining 
+    the required package.
+
+    - openSUSE 11.1 environment
+      1. Download the package for libusb-1_0-0.
+
+         You can download the package for openSUSE from the 
+         following site at the time of writing, March 2010. 
+
+         For x86(32bit) architecture
+         <http://download.opensuse.org/distribution/11.2/repo/oss/suse/i586/libusb-1_0-0-1.0.2-2.2.i586.rpm>
+
+         For x86_64(64bit) architecture
+         <http://download.opensuse.org/distribution/11.2/repo/oss/suse/x86_64/libusb-1_0-0-1.0.2-2.2.x86_64.rpm>
+
+      2. Install the downloaded package.
+
+         Example) For x86(32bit) architecture
+           # rpm -i libusb-1_0-0-1.0.2-2.2.i586.rpm
+
+         Note)
+           ! You need root privilege to install the package.
+
+    - Ubuntu 9.04 environment
+      1. Use the following command to install libusb-1.0-0.
+         # apt-get install libusb-1.0-0=2:1.0.0-1
+
+      2. Use the following command to update the CUPS package.
+         # apt-get install cups
+
+      Note)
+        ! You need root privilege to install the package.
+        ! If the necessary package is not installed by the 
+          above procedure, run the following command and reinstall 
+          the package.
+          # apt-get update
+
+4.2. Installing driver
+
+  * Run install.sh.
+
+    Run install.sh by either clicking the install.sh icon, or typing
+    the following in the command line prompt.
+
+    # ./install.sh
+
+  Note)
+    ! You need root privilege to install the software.
+      If you do not have root privilege, install.sh will execute
+      the sudo command. Type the password.
+    ! Switch the printer off before installing the driver.
+
+  * The terminal displays distribution information on the software 
+    which is about to be installed. If the information is correct, 
+    enter "y" and press the Enter key.
+
+    Example) For openSUSE 11.1 (i586)
+
+             # Install openSUSE-11.1 (i586)  [y/n]?      <- Message
+
+  * If the displayed distribution is not the one you are installing,
+    enter "n" and press the Enter key. The distribution selection 
+    screen is displayed. Enter a number between 1 and 4, and press 
+    the Enter key.
+
+    Please select your distribution.
+    1.Ubuntu 9.04 i586 DEB
+    2.Ubuntu 9.04 x86_64 DEB
+    3.openSUSE 11.1 i586 RPM
+    4.openSUSE 11.1 x86_64 RPM
+    Select number [1/2/3/4]?
+
+  * The installation will start.
+
+
+---------------------------------------------------------------------
+5. How to Set
+---------------------------------------------------------------------
+
+  * Device port setting
+
+    You need to set a port when not using a USB port.
+    Run /opt/epson/epuras/EPPortConfig.
+
+    Refer to the back-end manual for details.
+    The back-end manual is stored in the backend directory in this 
+    package.
+
+    Note)
+    ! Turn the printer off while setting the port.
+
+  * Registering the printer to CUPS
+
+    Turn the printer on before registering the printer to CUPS.
+
+    Open CUPS WebAdmin <http://localhost:631/> on a web browser 
+    to register the printer to CUPS.
+
+    Refer to CUPS information using the following URLs.
+          <http://localhost:631/help/>
+          <http://www.cups.org/>
+
+    - Select "Epson TM/BA/EU Printer" in the printer device selection
+      screen.
+
+      Example) For USB TM-T88IV
+
+               Epson TM/BA/EU Printer (USB TM-T88IV)
+
+    - Select the PPD file directly in the printer model selection 
+      screen.
+      The PPD file is stored in the ppd directory in this package.
+
+    Note)
+    ! Cancel the automatic recognition screen if it is displayed by 
+      the printer setting tool included in the distribution.
+
+  * Print settings
+
+    Refer to the printer driver manual for how to use the printer 
+    driver.
+    Please note that the printer driver manuals are installed in 
+    different locations depending on the distribution.
+
+    Example) For openSUSE 11.1
+    /usr/share/doc/packages/tmt-cups/README.ja.txt (Japanese)
+    /usr/share/doc/packages/tmt-cups/README.en.txt (English)
+
+    Refer to the manual included in the printer's PPD for the 
+    available print settings.
+
+    Example) For TM-T88IV
+    TM-T88IV_Manual.ja.txt (Japanese)
+    TM-T88IV_Manual.en.txt (English)
+
+
+---------------------------------------------------------------------
+6. List of installation packages
+---------------------------------------------------------------------
+This installer installs multiple binary packages.
+Use the rpm or dpkg command when you want to uninstall.
+Some of the packages may have already been installed even if the 
+installation is canceled for some reason. 
+
+  tmt-cups
+  epson-cups-escpos
+  ep-escpos
+  ep-core
+  ep-client
+
+
+---------------------------------------------------------------------
+7. Notes and restrictions
+---------------------------------------------------------------------
+
+* If the driver is updated without uninstalling, it will stop
+  operating.
+
+  Uninstall the old driver before the new driver is installed.
+
+
+* Uninstallation with rpm -e may fail if you specify multiple
+  packages.
+
+  Uninstall packages in the following order.
+  tmt-cups
+  epson-cups-escpos
+  ep-escpos
+  ep-core
+  ep-client
+
+  If an error is returned to the rpm or dpkg command, read the error
+  message carefully and try again.
+
+
+* Printing does not immediately stop after cancelling a job.
+
+  Jobs which the printer has once started printing cannot be canceled
+  immediately.
+  Do not turn off the printer or remove the printer cable before
+  the printer has completed printing after canceling a job.
+
+
+* Garbled characters may be printed after turning on the printer.
+
+  Do not turn the printer off and do not remove the communication 
+  cable while printing. If printing is canceled due to a communication
+  error etc., delete the failed print job and restart the printer.
+
+
+* Printing may not restart if the printer enters a suspension or 
+  hibernation state while printing or waiting for a print job.
+
+  Do not allow the printer to enter the suspension or hibernation 
+  state. 
+
+
+* Printing may fail if the printer is registered by the distribution
+  proprietary printer management tool.
+
+  Register the printer using CUPS WebAdmin.
+
+
+* If Internal Buzzer is selected, the buzzer does not beep multiple 
+  times even 2 or more is specified to Buzzer Repeat.
+
+  You can only specify 1 to Buzzer Repeat if you have selected 
+  Internal Buzzer.
+
+
+* When jobs that stored after the printer stops are released, the
+  printing may stop.
+
+  If the printer stops printing after such an operation, delete print
+  jobs and restart the PC.
+
+
+* The horizontal lines may appear on the printed paper.
+
+
+* When the cover of the printer connected with serial is opened and
+  closed during printing for the paper change etc, garbage characters
+  will be printed.
+
+  If garbage characters are printed, delete the failed print job and
+  restart the printer.
+
+
+* When the printer is connected with serial and Hardware flow control
+  is used, printing may not done correctly.
+
+  When the printer is connected with serial, use Xon/Xoff flow
+  control.
+
+
+* Printing may not done correctly after replacing the printer.
+
+  Reboot the PC after replacing the printer.
+
+
+* When printing is executed before the power of printer connected with
+  ethernet turns on, it will not start printing after the power of the
+  printer turns on.
+
+  When the printer is connected with ethernet, execute printing after
+  the power of the printer turns on.
+
+
+---------------------------------------------------------------------
+8. Support information
+---------------------------------------------------------------------
+
+* Europe, Middle East, Africa, Asia, Oceania
+  http://www.epson-pos.com/
+  From this web site, you can download the latest printer driver.
+
+
+* North America, Latin America
+  http://www.pos.epson.com/
+  If you are a customer from North, Central or South America, please 
+  visit the Epson America Inc. site.
+
+
+---------------------------------------------------------------------
+9. Modification from the old version
+---------------------------------------------------------------------
+
+* Ver. 1.1.0.0
+
+  - How to print text code using the user defined file is described on
+    the printer driver manual.
+
+  - TM-T20 with serial connection is supported.
+
+  - BA-T500II with serial, parallel and ethernet connection is
+    supported.
+
+  - The following problem has been solved:
+
+    - When the IP address of the PC is not configured, EPPortConfig
+      will stop operating.
+
+
+* Ver. 1.0.1.0
+
+  - the following printer is supported:
+
+    - BA-T500II
+
+
+* Ver. 1.0.0.0
+
+  - New release.
+
+
+---------------------------------------------------------------------
+Copyright (C) Seiko Epson Corporation 2010. All rights reserved.
+
+Linux is the registered trademark or trademark of Linus Torvalds in 
+the U.S.A. and other countries.
+
+CUPS and the CUPS logo are trademarks of Apple Inc. registered in the
+U.S.A. and other countries.
+
+Novell and openSUSE are trademarks of Novell, Inc. which is the 
+founder and sponsor of the openSUSE Project and has been designated 
+by the project.
+
+Ubuntu and Canonical are registered trademarks of Canonical Ltd.
+
+Other product names in this document are trademarks or registered
+trademarks of respective companies.
