@@ -1,0 +1,273 @@
+Epson TM/BAシリーズ サーマルプリンター バックエンドマニュアル
+
+目次
+1. 使用許諾契約
+2. ファイル構成
+3. 動作環境
+4. インストール方法
+5. ポートの設定
+6. デバイスの選択
+7. アンインストール方法
+
+------------------------------------------------------------------------
+1. 使用許諾契約
+------------------------------------------------------------------------
+
+本ソフトウェアのライセンスについては、各パッケージに含まれる
+ライセンス条文を参照下さい。
+
+本ソフトウェアのバイナリーファイルを構成しているソースコードの著作権は、
+すべてセイコーエプソン株式会社が保有しています。
+
+
+------------------------------------------------------------------------
+2. ファイル構成
+------------------------------------------------------------------------
+
+Epson TM/BAシリーズバックエンドのパッケージ構成は、以下の通りです。
+
+* OpenSUSE 11.1/SLED 11 (32Bit)用:
+  ep-client-2.0.9.0-1.i586.rpm             Epson共通通信モジュール(クライアント部分)
+  ep-core-2.0.9.0-1.i586.rpm               Epson共通通信モジュール(コア部分)
+  ep-escpos-2.0.10.2-1.i586.rpm            Epson TM/BAシリーズ通信モジュール
+  epson-cups-escpos-1.0.10.0-1.i586.rpm    Epson TM/BAシリーズバックエンド
+* OpenSUSE 11.1 (64Bit)用:
+  ep-client-2.0.9.0-1.x86_64.rpm           Epson共通通信モジュール(クライアント部分)
+  ep-core-2.0.9.0-1.x86_64.rpm             Epson共通通信モジュール(コア部分)
+  ep-escpos-2.0.10.2-1.x86_64.rpm          Epson TM/BAシリーズ通信モジュール
+  epson-cups-escpos-1.0.10.0-1.x86_64.rpm  Epson TM/BAシリーズバックエンド
+* Ubuntu 9.04 (32Bit)用:
+  ep-client-2.0.10.1-1.i386.deb            Epson共通通信モジュール(クライアント部分)
+  ep-core-2.0.10.1-1.i386.deb              Epson共通通信モジュール(コア部分)
+  ep-escpos-2.0.10.2-1.i386.deb            Epson TM/BAシリーズ通信モジュール
+  epson-cups-escpos-1.0.10.0-1.i386.deb    Epson TM/BAシリーズバックエンド
+* Ubuntu 9.04 (64Bit)用:
+  ep-client-2.0.10.1-1.amd64.deb           Epson共通通信モジュール(クライアント部分)
+  ep-core-2.0.10.1-1.amd64.deb             Epson共通通信モジュール(コア部分)
+  ep-escpos-2.0.10.2-1.amd64.deb           Epson TM/BAシリーズ通信モジュール
+  epson-cups-escpos-1.0.10.0-1.amd64.deb   Epson TM/BAシリーズバックエンド
+
+  BackendManual.ja.txt                     バックエンドマニュアル。
+                                           本ファイルです。
+
+各パッケージは、openSUSE用のrpmパッケージとUbuntu用のdebパッケージが
+用意されています。また、それらのパッケージはアーキテクチャごとにIntel
+x86(32bit)用とIntel x64(64bit)用のパッケージが用意されています。
+
+
+------------------------------------------------------------------------
+3. 動作環境
+------------------------------------------------------------------------
+
+本ソフトウェアは、以下の環境をサポートしています。
+サポート環境以外での動作については保証致しません。
+
+* Operating System
+  - openSUSE 11.1
+  - Ubuntu 9.04
+
+* Hardware:
+  - Intel x86(32bit) architecture.
+  - Intel x64(64bit) architecture.
+
+
+
+本ソフトウェアが必要とするソフトウェアを以下に示します。
+本ソフトウェアをインストールする前に以下のソフトウェアをインストールして下さい。
+
+* CUPS Ver.1.1.23 以降
+      <http://www.cups.org/>
+
+* libusb-1.0.0 以降
+      <http://www.libusb.org/>
+
+
+------------------------------------------------------------------------
+4. インストール方法
+------------------------------------------------------------------------
+
+インストールマニュアルに従ってインストールして下さい。
+
+
+------------------------------------------------------------------------
+5. ポートの設定
+------------------------------------------------------------------------
+
+USB以外のポートを使用する場合は、ポートの設定が必要です。
+/opt/epson/epuras/EPPortConfig を実行してください。
+USBの場合は、デバイスをオンライン状態で接続した時に、PnP機能により自動的に
+ポートの追加を行います。
+
+
+5.1. ポートを追加する場合
+
+> Epson Port Configuration Tool
+> 
+> Please choose one of the following options:
+  "Add new port"の番号を入力後、Enterキーを押下して下さい。
+
+> Add New Port
+>
+> Please choose one of the following device types:
+  "TM-T / TM-U / BA-T / EU Series Printer, TM-C100"の番号を入力後、Enterキーを押下して下さい。
+    
+> Communications Type
+>
+> Please choose one of the following port types:
+  ポートのI/F種別に応じた番号を入力後、Enterキーを押下して下さい。
+
+  - Serial Port
+> Serial Port Name
+> 
+> Please choose one of the following port names:
+  使用するシリアルポートを選択して下さい。
+
+> Baud Rate
+  1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 bpsのいずれかを選択してください。
+
+> Parity
+  None, Odd, Evenのいずれかを選択して下さい。
+
+> Stop Bits
+  1 bit, 2 or more bitsのいずれかを選択してください。
+
+> Flow Control
+  Hardware, Xon/Xoffのいずれかを選択してください。
+
+  - Parallel Port
+> Parallel Port Name
+> 
+> Please choose one of the available parallel ports:
+  使用するパラレルポートを選択して下さい。
+
+  - Ethernet Port
+> Ethernet Port Name
+> 
+> Please input an IP address: (ex 192.168.0.10)
+  IPアドレスを入力して、Enterキーを押下して下さい。
+
+> Do you want to save the changes you have made (Y or N)
+  Yを入力後、Enterキーを押下して下さい。
+
+
+5.2. ポートの設定を変更する場合
+
+> Epson Port Configuration Tool
+> 
+> Please choose one of the following options:
+  "Configure existing port"の番号を入力後、Enterキーを押下して下さい。
+
+
+> Configure Existing Port
+> 
+> Please choose one of the existing ports:
+> 1. ESDPRT001 (/dev/ttyS0)
+> ...
+  設定を変更するポートの番号を入力後、Enterキーを押下して下さい。
+
+  - Serial Port
+> Serial Port Name
+> 
+> Please choose one of the following port names:
+  使用するシリアルポートを選択して下さい。
+
+> Baud Rate
+  1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 bpsのいずれかを選択してください。
+
+> Parity
+  None, Odd, Evenのいずれかを選択して下さい。
+
+> Stop Bits
+  1 bit, 2 or more bitsのいずれかを選択してください。
+
+> Flow Control
+  Hardware, Xon/Xoffのいずれかを選択してください。
+
+  - Parallel Port
+> Parallel Port Name
+> 
+> Please choose one of the available parallel ports:
+  使用するパラレルポートを選択して下さい。
+
+  - Ethernet Port
+> Ethernet Port Name
+> 
+> Please input an IP address: (ex 192.168.0.10)
+  IPアドレスを入力して、Enterキーを押下して下さい。
+
+> Do you want to save the changes you have made (Y or N)
+  Yを入力後、Enterキーを押下して下さい。
+
+
+5.3. ポートを削除する場合
+
+> Delete Existing Port
+> 
+> Please choose one of the existing ports:
+> 1. ESDPRT001 (/dev/ttyS0)
+> ...
+  削除するポートの番号を入力後、Enterキーを押下して下さい。
+
+> Do you want to save the changes you have made (Y or N)
+  Yを入力後、Enterキーを押下して下さい。
+
+
+------------------------------------------------------------------------
+6. デバイスの選択
+------------------------------------------------------------------------
+
+CUPS WebAdmin <http://localhost:631/> のデバイス選択画面で、
+"Epson TM/BA/EU Printer"を選択して下さい。
+
+- USB TM-T88IVの例
+  Epson TM/BA/EU Printer (USB TM-T88IV)
+- Parallelポートの例
+  Epson TM/BA/EU Printer (/dev/parport0)
+- Serialポートの例
+  Epson TM/BA/EU Printer (/dev/ttyS0)
+- Ethernetポートの例
+  Epson TM/BA/EU Printer (192.168.0.10)
+
+
+------------------------------------------------------------------------
+7. アンインストール
+------------------------------------------------------------------------
+
+以下の手順でアンインストールしてください。
+
+1. Epson TM/BAシリーズ プリンタードライバーパッケージをアンインストールしてください。
+  openSUSE11.1の場合:	rpm -e tmt-cups
+  Ubuntu9.04の場合:		dpkg -P tmt-cups
+2. Epson TM/BAシリーズ バックエンドパッケージをアンインストールしてください。
+  openSUSE11.1の場合:	rpm -e epson-cups-escpos
+  Ubuntu9.04の場合:		dpkg -P epson-cups-escpos
+3. Epson TM/BAシリーズ 通信モジュールパッケージをアンインストールしてください。
+  openSUSE11.1の場合:	rpm -e ep-escpos
+  Ubuntu9.04の場合:		dpkg -P ep-escpos
+
+TM/BAシリーズ用のパッケージのみをご使用中の場合、以下の手順で通信モジュールを
+アンインストールしてください。
+4. Epson共通通信モジュール(コア部分)パッケージをアンインストールしてください。
+  openSUSE11.1の場合:	rpm -e ep-core
+  Ubuntu9.04の場合:		dpkg -P ep-core
+5. Epson共通通信モジュール(クライアント部分)パッケージをアンインストールしてください。
+  openSUSE11.1の場合:	rpm -e ep-client
+  Ubuntu9.04の場合:		dpkg -P ep-client
+
+  注）
+    ! アンインストール作業には、root 権限が必要です。
+
+
+------------------------------------------------------------------------
+Copyright (C) Seiko Epson Corporation 2010. All rights reserved
+
+Linuxは、Linus Torvalds氏の米国およびその他の国における登録商標または商標です。
+
+CUPSとCUPSロゴは、米国および他の国々で登録されたApple Inc.の商標です。
+
+"Novell" と "openSUSE" は、The openSUSE Project の設立者であり出資者でもある、
+同プロジェクトに指名された Novell, Inc. の商標です。
+
+UbuntuとCanonicalはCanonical Ltd.登録商標です。
+
+そのほかの製品名は各社の商標または登録商標です。 

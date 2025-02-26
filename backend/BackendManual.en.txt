@@ -1,0 +1,279 @@
+Epson TM/BA Series Thermal Printer Backend Manual
+
+Contents
+1. License Agreement
+2. File Structure
+3. System Requirements
+4. Installation
+5. Port settings
+6. Device selection
+7. Uninstallation
+
+------------------------------------------------------------------------
+1. License Agreement
+------------------------------------------------------------------------
+
+For details of the software’s license, please refer to the article on
+licensing which is included in this package.
+
+SEIKO EPSON CORP. holds every copyright of the source code which composes
+the binary files of the software.
+
+------------------------------------------------------------------------
+2. File Structure
+------------------------------------------------------------------------
+
+The structure of Epson TM/BA Series Backend Package is as follows:
+
+* For OpenSUSE 11.1/SLED 11 (32Bit):
+  ep-client-2.0.9.0-1.i586.rpm             Epson Common Communication Module(Client part)
+  ep-core-2.0.9.0-1.i586.rpm               Epson Common Communication Module(Core part)
+  ep-escpos-2.0.10.2-1.i586.rpm            Epson TM/BA Series Communication Module
+  epson-cups-escpos-1.0.10.0-1.i586.rpm    Epson TM/BA Series Backend
+* For OpenSUSE 11.1 (64Bit):
+  ep-client-2.0.9.0-1.x86_64.rpm           Epson Common Communication Module(Client part)
+  ep-core-2.0.9.0-1.x86_64.rpm             Epson Common Communication Module(Core part)
+  ep-escpos-2.0.10.2-1.x86_64.rpm          Epson TM/BA Series Communication Module
+  epson-cups-escpos-1.0.10.0-1.x86_64.rpm  Epson TM/BA Series Backend
+* For Ubuntu 9.04 (32Bit):
+  ep-client-2.0.10.1-1.i386.deb            Epson Common Communication Module(Client part)
+  ep-core-2.0.10.1-1.i386.deb              Epson Common Communication Module(Core part)
+  ep-escpos-2.0.10.2-1.i386.deb            Epson TM/BA Series Communication Module
+  epson-cups-escpos-1.0.10.0-1.i386.deb    Epson TM/BA Series Backend
+* For Ubuntu 9.04 (64Bit):
+  ep-client-2.0.10.1-1.amd64.deb           Epson Common Communication Module(Client part)
+  ep-core-2.0.10.1-1.amd64.deb             Epson Common Communication Module(Core part)
+  ep-escpos-2.0.10.2-1.amd64.deb           Epson TM/BA Series Communication Module
+  epson-cups-escpos-1.0.10.0-1.amd64.deb   Epson TM/BA Series Backend
+
+  BackendManual.en.txt                     Backend Manual.
+                                           This file.
+
+The rpm package for openSUSE and deb package for Ubuntu are available for
+each package. In addition, these packages have package for Intel x86(32bit)
+and package for Intel x64(64bit) for each architecture.
+
+
+------------------------------------------------------------------------
+3. System Requirements
+------------------------------------------------------------------------
+
+This software supports the following system environment.
+Those operations not included in the supported system environment are
+not warranted.
+
+* Operating System
+  - openSUSE 11.1
+  - Ubuntu 9.04
+
+* Hardware:
+  - Intel x86(32bit) architecture.
+  - Intel x64(64bit) architecture.
+
+
+
+The following are the software required for this software:
+Please install the following software before installing this software.
+
+* CUPS Ver.1.1.23 or later
+      <http://www.cups.org/>
+
+* libusb-1.0.0 or later
+      <http://www.libusb.org/>
+
+
+------------------------------------------------------------------------
+4. Installation
+------------------------------------------------------------------------
+
+Install software according to the install manual.
+
+
+------------------------------------------------------------------------
+5. Port Settings
+------------------------------------------------------------------------
+
+Port setting is required if port other than USB is used. 
+Please execute /opt/epson/epuras/EPPortConfig.
+For USB, the port will be added automatically by PnP function when the device
+is connected while during offline.
+
+
+5.1. In case of adding port
+
+> Epson Port Configuration Tool
+> 
+> Please choose one of the following options:
+  Input the number value of "Add new port", press Enter key.
+
+> Add New Port
+>
+> Please choose one of the following device types:
+  Input the value of "TM-T / TM-U / BA-T / EU Series Printer, TM-C100",
+  then press the Enter key.
+    
+> Communications Type
+>
+> Please choose one of the following port types:
+  Input the value that corresponds to the port’s interface type,
+  then press the Enter key.
+
+  - Serial Port
+> Serial Port Name
+> 
+> Please choose one of the following port names:
+  Select the serial port to be used.
+
+> Baud Rate
+  Select on of 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 bps.
+
+> Parity
+  Select one from None, Odd, Even.
+
+> Stop Bits
+  Select one from 1 bit, 2 or more bits.
+
+> Flow Control
+  Select either Hardware or Xon/Xoff
+
+  - Parallel Port
+> Parallel Port Name
+> 
+> Please choose one of the available parallel ports:
+  Select the parallel port to be used.
+
+  - Ethernet Port
+> Ethernet Port Name
+> 
+> Please input an IP address: (ex 192.168.0.10)
+  Input IP address then press the Enter key.
+
+> Do you want to save the changes you have made (Y or N)
+  Input Y then press the Enter key.
+
+
+5.2. In case of changing port settings
+
+> Epson Port Configuration Tool
+> 
+> Please choose one of the following options:
+  Input the number value of "Configure existing port" then press the Enter key.
+
+
+> Configure Existing Port
+> 
+> Please choose one of the existing ports:
+> 1. ESDPRT001 (/dev/ttyS0)
+> ...
+  Input the number value of the port setting to be changed then 
+  press the Enter key.
+
+  - Serial Port
+> Serial Port Name
+> 
+> Please choose one of the following port names:
+  Select the serial port to be used.
+
+> Baud Rate
+  Select one from 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 bps.
+
+> Parity
+  Select one from None, Odd, Even.
+
+> Stop Bits
+  Select one from 1 bit, 2 or more bits.
+
+> Flow Control
+  Select either Hardware or Xon/Xoff
+
+  - Parallel Port
+> Parallel Port Name
+> 
+> Please choose one of the available parallel ports:
+  Select the parallel port to be used.
+
+  - Ethernet Port
+> Ethernet Port Name
+> 
+> Please input an IP address: (ex 192.168.0.10)
+  Input IP address then press the Enter key.
+
+> Do you want to save the changes you have made (Y or N)
+  Input Y then press the Enter key.
+
+
+5.3. In case of deleting the port
+
+> Delete Existing Port
+> 
+> Please choose one of the existing ports:
+> 1. ESDPRT001 (/dev/ttyS0)
+> ...
+  Input the number value of the port to be deleted then press the Enter key.
+
+> Do you want to save the changes you have made (Y or N)
+  Input Y then press the Enter key.
+
+
+------------------------------------------------------------------------
+6. Device Selection
+------------------------------------------------------------------------
+
+Please select "Epson TM/BA/EU Printer" on the device selection screen of
+CUPS WebAdmin <http://localhost:631/>.
+- In case of USB TM-T88IV
+  Epson TM/BA/EU Printer (USB TM-T88IV)
+- In case of Parallel Port
+  Epson TM/BA/EU Printer (/dev/parport0)
+- In case of Serial Port
+  Epson TM/BA/EU Printer (/dev/ttyS0)
+- In case of Ethernet Port
+  Epson TM/BA/EU Printer (192.168.0.10)
+
+
+------------------------------------------------------------------------
+7. Uninstallation
+------------------------------------------------------------------------
+  ep-client-2.0                 Epson Common Communication Module(Client part)
+  ep-core-2.0                   Epson Common Communication Module(Core part)
+  ep-escpos-2.0                 Epson TM/BA Series Communication Module
+  epson-cups-escpos-1.0         Epson TM/BA Series Backend
+
+Please uninstall software accroding to the following steps.
+
+1. Uninstall Epson TM/BA Series Printer Driver Package.
+  In case of openSUSE11.1:	rpm -e tmt-cups
+  In case of Ubuntu9.04:	dpkg -P tmt-cups
+2. Uninstall Epson TM/BA Series Backend.
+  In case of openSUSE11.1:	rpm -e epson-cups-escpos
+  In case of Ubuntu9.04:	dpkg -P epson-cups-escpos
+3. Uninstall Epson TM/BA Series Communication Module
+  In case of openSUSE11.1:	rpm -e ep-escpos
+  In case of Ubuntu9.04:	dpkg -P ep-escpos
+
+Please uninstall the Communication Module according to the following steps
+if only the package for TM/BA series is used.
+4. Uninstall Epson Common Communication Module(Core part).
+  In case of openSUSE11.1:	rpm -e ep-core
+  In case of Ubuntu9.04:	dpkg -P ep-core
+5. Uninstall Epson Common Communication Module(Client part)
+  In case of openSUSE11.1:	rpm -e ep-client
+  In case of Ubuntu9.04:	dpkg -P ep-client
+
+  Note)
+    ! For uninstallation, root authority is required.
+
+
+------------------------------------------------------------------------
+Copyright (C) Seiko Epson Corporation 2010. All rights reserved
+
+Linux is the registered trademark of Linus Torvalds in the U.S. and other countries. 
+
+CUPS and the CUPS logo are trademarks of Apple Inc. in the U.S. and other countries. 
+
+"Novell" and "openSUSE" are trademarks of Novell, Inc., which founded, sponsors,
+and is designated by, The openSUSE Project. 
+
+Ubuntu and Canonical are registered trademarks of Canonical Ltd.
+
+All other product names are the trademarks of their respective owners.
